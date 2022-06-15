@@ -14,5 +14,5 @@ public interface StudentRepository extends JpaRepository<Student, Long> {
 
     @Query("select s from Student s where upper(s.name) like concat('%',:text,'%')"+
     "or upper(s.surname) like concat('%',:text,'%') or upper(s.email) like concat('%',:text,'%')")
-    List<Student> searchAndPagination(@Param("text") Student text, Pageable pageable);
+    List<Student> searchAndPagination(@Param("text") String text, Pageable pageable);
 }

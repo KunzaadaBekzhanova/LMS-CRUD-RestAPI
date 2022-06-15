@@ -1,7 +1,6 @@
 package peaksoft.restapi.services;
 
 import lombok.RequiredArgsConstructor;
-import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Service;
 import peaksoft.restapi.dto.StudentRequest;
@@ -11,11 +10,11 @@ import peaksoft.restapi.entities.Student;
 import peaksoft.restapi.mappers.StudentEditMapper;
 import peaksoft.restapi.mappers.StudentViewMapper;
 import peaksoft.restapi.repositories.StudentRepository;
+import org.springframework.data.domain.Pageable;
 
-import java.awt.print.Pageable;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 @RequiredArgsConstructor
@@ -48,15 +47,15 @@ public class StudentService {
         return viewMapper.view(repository.findAll());
     }
 
-    public StudentResponse deleteById(long id) {
+    public StudentResponse deleteById(Long id) {
         Student student = repository.getById(id);
         repository.delete(student);
         return viewMapper.viewStudent(student);
     }
     public StudentResponseView getAllStudentsPagination(String text, int page, int size){
         StudentResponseView responseView = new StudentResponseView();
-        org.springframework.data.domain.Pageable pageable = PageRequest.of(page,size);
-        responseView.setResponses();
+        Pageable pageable = PageRequest.of(page-1,size);
+        responseView.setResponses(view(search(text,pageable)));
         return responseView;
 
     }
