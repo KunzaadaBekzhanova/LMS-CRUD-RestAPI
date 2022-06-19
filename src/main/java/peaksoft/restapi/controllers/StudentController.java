@@ -4,10 +4,12 @@ import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
-import peaksoft.restapi.dto.StudentRequest;
-import peaksoft.restapi.dto.StudentResponse;
-import peaksoft.restapi.dto.StudentResponseView;
+import peaksoft.restapi.dto.student.StudentRequest;
+import peaksoft.restapi.dto.student.StudentResponse;
+import peaksoft.restapi.dto.student.StudentResponseView;
 import peaksoft.restapi.services.StudentService;
+
+import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
@@ -40,17 +42,11 @@ public class StudentController {
     public StudentResponse delete(@PathVariable Long id) {
         return service.deleteById(id);
     }
-//    @GetMapping
-//    public List<StudentResponse> getAllStudents(){
-//        return service.getAllStudents();
-//    }
 
     @GetMapping
-    @Operation(summary = "Get AllStudents And Search", description = "we can get all students and search")
-    public StudentResponseView getAllStudents(@RequestParam(name = "text", required = false) String text,
-                                              @RequestParam int page,
-                                              @RequestParam int size) {
-        return service.getAllStudentsPagination(text, page, size);
-
+    public List<StudentResponse> getAllStudents(){
+        return service.getAllStudents();
     }
+
+
 }

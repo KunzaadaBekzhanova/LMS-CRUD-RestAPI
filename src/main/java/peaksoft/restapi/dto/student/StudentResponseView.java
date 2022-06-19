@@ -1,7 +1,8 @@
-package peaksoft.restapi.dto;
+package peaksoft.restapi.dto.student;
 
 import lombok.Getter;
 import lombok.Setter;
+import peaksoft.restapi.dto.student.StudentResponse;
 
 import java.util.List;
 

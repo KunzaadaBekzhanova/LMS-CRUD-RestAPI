@@ -1,10 +1,10 @@
-package peaksoft.restapi.mappers;
+package peaksoft.restapi.mappers.student;
 
 import org.springframework.stereotype.Component;
-import peaksoft.restapi.dto.StudentRequest;
+import peaksoft.restapi.dto.student.StudentRequest;
+import peaksoft.restapi.entities.Group;
 import peaksoft.restapi.entities.Student;
 
-import java.time.LocalDate;
 
 @Component
 public class StudentEditMapper {
@@ -13,21 +13,19 @@ public class StudentEditMapper {
             return null;
         }
         Student student = new Student();
-        student.setName(request.getName());
-        student.setAge(request.getAge());
+        student.setFirstName(request.getFirstName());
+        student.setLastName(request.getLastName());
         student.setEmail(request.getEmail());
-        student.setSurname(request.getSurname());
-        student.setCreated(LocalDate.now());
-        student.setActive(true);
+        student.setStudyFormat(request.getStudyFormat());
+       // student.setGroups(new Group());
 
         return student;
     }
 
     public void update(Student student, StudentRequest request){
-        student.setName(request.getName());
-        student.setAge(request.getAge());
+        student.setFirstName(request.getFirstName());
+        student.setLastName(request.getLastName());
         student.setEmail(request.getEmail());
-        student.setSurname(request.getSurname());
 
 
     }

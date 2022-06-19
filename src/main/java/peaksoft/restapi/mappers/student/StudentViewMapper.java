@@ -1,7 +1,7 @@
-package peaksoft.restapi.mappers;
+package peaksoft.restapi.mappers.student;
 
 import org.springframework.stereotype.Component;
-import peaksoft.restapi.dto.StudentResponse;
+import peaksoft.restapi.dto.student.StudentResponse;
 import peaksoft.restapi.entities.Student;
 
 import java.util.ArrayList;
@@ -16,10 +16,10 @@ public class StudentViewMapper {
         StudentResponse response = new StudentResponse();
         response.setId(student.getId());
         response.setEmail(student.getEmail());
-        response.setSurname(student.getSurname());
-        response.setAge(student.getAge());
-        response.setActive(student.isActive());
-        response.setCreated(student.getCreated());
+        response.setFirstName(student.getFirstName());
+        response.setLastName(student.getLastName());
+        response.setEmail(student.getEmail());
+        response.setStudyFormat(student.getStudyFormat());
 
         return response;
     }

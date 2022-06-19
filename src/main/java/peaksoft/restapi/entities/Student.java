@@ -1,31 +1,36 @@
 package peaksoft.restapi.entities;
 
 
-import lombok.Getter;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
-import org.springframework.data.annotation.CreatedDate;
+import peaksoft.restapi.StudyFormat;
 
 import javax.persistence.*;
-import java.time.LocalDate;
+
+import static javax.persistence.CascadeType.MERGE;
 
 @Entity
-@Table(name = "students")
+@AllArgsConstructor
 @NoArgsConstructor
-@Getter @Setter
+@Data
+@Builder
+@Table(name = "students")
 public class Student {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @SequenceGenerator(name = "student_gen",sequenceName = "student_seq", allocationSize = 1)
     private Long id;
-    private String name;
-    private String surname;
+    @Column(name = "first_name")
+    private String firstName;
+    @Column(name = "last_name")
+    private String lastName;
     private String email;
-    private int age;
-    @CreatedDate
-    private LocalDate created;
-    private boolean isActive;
+    @Enumerated(EnumType.STRING)
+    private StudyFormat studyFormat;
 
-
+    @ManyToOne(cascade = MERGE)
+    private Group group;
 
 }
