@@ -12,7 +12,7 @@ import peaksoft.restapi.services.UserService;
 @Component
 
 public class CustomUserDetService implements UserDetailsService {
-
+    @Autowired
     private UserService service;
 
 
