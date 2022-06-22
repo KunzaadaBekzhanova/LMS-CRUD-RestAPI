@@ -15,7 +15,6 @@ public class StudentViewMapper {
         }
         StudentResponse response = new StudentResponse();
         response.setId(student.getId());
-        response.setEmail(student.getEmail());
         response.setFirstName(student.getFirstName());
         response.setLastName(student.getLastName());
         response.setEmail(student.getEmail());

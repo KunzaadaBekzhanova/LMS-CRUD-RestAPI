@@ -1,6 +1,7 @@
 package peaksoft.restapi.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.restapi.dto.teacher.TeacherRequest;
 import peaksoft.restapi.dto.teacher.TeacherResponse;
@@ -11,6 +12,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/teacher")
+@PreAuthorize(value = "hasAuthority('ADMIN')")
 public class TeacherController {
     private final TeacherService service;
 

@@ -1,6 +1,7 @@
 package peaksoft.restapi.entities;
 
 import lombok.*;
+import org.springframework.security.access.prepost.PreAuthorize;
 
 import javax.persistence.*;
 import java.util.ArrayList;

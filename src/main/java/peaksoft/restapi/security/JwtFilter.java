@@ -55,7 +55,7 @@ public class JwtFilter extends GenericFilter {
     public String getTokenFromRequest(HttpServletRequest request){
         String bear = request.getHeader(AUTHORIZATION);
 //        System.out.println(bear);
-        if(hasText(bear)&&bear.startsWith("Bearer")){
+        if(hasText(bear)&&bear.startsWith("Bearer ")){
             return bear.substring(7);
         }
         return  null;

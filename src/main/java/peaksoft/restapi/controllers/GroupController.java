@@ -1,6 +1,7 @@
 package peaksoft.restapi.controllers;
 
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.restapi.dto.group.GroupRequest;
 import peaksoft.restapi.dto.group.GroupResponse;
@@ -12,6 +13,8 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/group")
+@PreAuthorize(value = "hasAnyAuthority('ADMIN','USER')")
+
 public class GroupController {
     private final GroupService service;
 

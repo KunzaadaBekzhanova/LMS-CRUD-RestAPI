@@ -2,6 +2,7 @@ package peaksoft.restapi.controllers;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.restapi.dto.company.CompanyRequest;
 import peaksoft.restapi.dto.company.CompanyResponse;
@@ -16,15 +17,16 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/company")
+@PreAuthorize("hasAuthority('ADMIN')")
 public class CompanyController {
     private final CompanyService service;
-    @Autowired
+
     CompanyRepository companyRepository;
-    @Autowired
+
     CourseRepository courseRepository;
 
 
-    @PostMapping
+    @PostMapping("/admin")
     public CompanyResponse create(@RequestBody CompanyRequest request) {
         return service.create(request);
     }

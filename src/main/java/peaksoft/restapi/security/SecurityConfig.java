@@ -12,7 +12,7 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-    @Autowired
+
     private JwtFilter filter;
 
 
@@ -24,7 +24,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/admin/").hasRole("ADMIN")
                 .antMatchers("/user/").hasRole("USER")
                 .antMatchers("/ha").authenticated()
-                .antMatchers("/register/","/aut").permitAll()
+                .antMatchers("/register/","/auth").permitAll()
                 .and()
                 .addFilterBefore(filter, UsernamePasswordAuthenticationFilter.class);
     }

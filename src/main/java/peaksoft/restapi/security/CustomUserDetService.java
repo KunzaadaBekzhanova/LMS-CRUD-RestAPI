@@ -13,7 +13,6 @@ import peaksoft.restapi.services.UserService;
 
 public class CustomUserDetService implements UserDetailsService {
 
-    @Autowired
     private UserService service;
 
 

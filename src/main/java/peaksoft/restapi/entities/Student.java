@@ -15,7 +15,6 @@ import static javax.persistence.CascadeType.MERGE;
 @AllArgsConstructor
 @NoArgsConstructor
 @Data
-@Builder
 @Table(name = "students")
 public class Student {
     @Id

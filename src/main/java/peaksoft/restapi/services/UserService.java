@@ -20,6 +20,7 @@ public class UserService {
     public User saveUser(User user) {
 //            Role userRole = roleRepo.findRoleName("Role_Admin");
         Role userRole = new Role();
+        userRole.setRoleName("USER");
         user.setRole(userRole);
         user.setPassword(encoder.encode(user.getPassword()));
         return repo.save(user);

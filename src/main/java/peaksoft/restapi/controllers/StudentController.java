@@ -3,10 +3,10 @@ package peaksoft.restapi.controllers;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import peaksoft.restapi.dto.student.StudentRequest;
 import peaksoft.restapi.dto.student.StudentResponse;
-import peaksoft.restapi.dto.student.StudentResponseView;
 import peaksoft.restapi.services.StudentService;
 
 import java.util.List;
@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("api/student")
+@PreAuthorize(value = "hasAuthority('USER')")
 @Tag(name = "Student API", description = "User with role admin can add, update, delete or get all students")
 public class StudentController {
 
